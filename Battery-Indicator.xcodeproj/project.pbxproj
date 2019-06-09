@@ -12,6 +12,9 @@
 		0EED820B22AD0BEA009119A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EED820922AD0BEA009119A7 /* Main.storyboard */; };
 		0EED820D22AD0BEC009119A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EED820C22AD0BEC009119A7 /* Assets.xcassets */; };
 		0EED821022AD0BEC009119A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EED820E22AD0BEC009119A7 /* LaunchScreen.storyboard */; };
+		0EED821922AD0D8D009119A7 /* BatteryIndicatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EED821722AD0D8D009119A7 /* BatteryIndicatorVC.swift */; };
+		0EED821A22AD0D8D009119A7 /* BatteryIndicatorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EED821822AD0D8D009119A7 /* BatteryIndicatorVC.xib */; };
+		0EED821C22AD15E2009119A7 /* heyBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EED821B22AD15E2009119A7 /* heyBattery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		0EED820C22AD0BEC009119A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EED820F22AD0BEC009119A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EED821122AD0BEC009119A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EED821722AD0D8D009119A7 /* BatteryIndicatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIndicatorVC.swift; sourceTree = "<group>"; };
+		0EED821822AD0D8D009119A7 /* BatteryIndicatorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BatteryIndicatorVC.xib; sourceTree = "<group>"; };
+		0EED821B22AD15E2009119A7 /* heyBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heyBattery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				0EED820522AD0BEA009119A7 /* AppDelegate.swift */,
+				0EED821B22AD15E2009119A7 /* heyBattery.swift */,
 				0EED820722AD0BEA009119A7 /* ViewController.swift */,
+				0EED821722AD0D8D009119A7 /* BatteryIndicatorVC.swift */,
+				0EED821822AD0D8D009119A7 /* BatteryIndicatorVC.xib */,
 				0EED820922AD0BEA009119A7 /* Main.storyboard */,
 				0EED820C22AD0BEC009119A7 /* Assets.xcassets */,
 				0EED820E22AD0BEC009119A7 /* LaunchScreen.storyboard */,
@@ -122,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EED821A22AD0D8D009119A7 /* BatteryIndicatorVC.xib in Resources */,
 				0EED821022AD0BEC009119A7 /* LaunchScreen.storyboard in Resources */,
 				0EED820D22AD0BEC009119A7 /* Assets.xcassets in Resources */,
 				0EED820B22AD0BEA009119A7 /* Main.storyboard in Resources */,
@@ -135,7 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EED821922AD0D8D009119A7 /* BatteryIndicatorVC.swift in Sources */,
 				0EED820822AD0BEA009119A7 /* ViewController.swift in Sources */,
+				0EED821C22AD15E2009119A7 /* heyBattery.swift in Sources */,
 				0EED820622AD0BEA009119A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GJ2W6DL8SG;
 				INFOPLIST_FILE = "Battery-Indicator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +316,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GJ2W6DL8SG;
 				INFOPLIST_FILE = "Battery-Indicator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
