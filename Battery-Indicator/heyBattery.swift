@@ -9,7 +9,7 @@
 import UIKit
 
 protocol heyBatteryDelegate {
-    func heyBatteryUpdate(value: UIDevice.BatteryState, state: UIDevice.BatteryState)
+    func heyBatteryUpdate(value: Float, state: UIDevice.BatteryState)
 }
 
 
@@ -25,17 +25,19 @@ class heyBattery {
         return UIDevice.current.batteryState
     }
     
+    var delegate : heyBatteryDelegate?
+    
     init() {
         UIDevice.current.isBatteryMonitoringEnabled = true
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(batteryLevelDidChange),
+            selector: #selector(self.batteryLevelDidChange(_:)),
             name: UIDevice.batteryLevelDidChangeNotification,
             object: nil
         )
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(batteryStateDidChange(_:)),
+            selector: #selector(self.batteryStateDidChange(_:)),
             name: UIDevice.batteryStateDidChangeNotification,
             object: nil
         )
@@ -43,17 +45,28 @@ class heyBattery {
         debugBattery(state: batteryState)
     }
     
-    // MARK: Battery 
+    
+    // MARK: Battery
+    public func showLevel() -> Float{
+        return self.batteryLevel
+    }
+    
+    public func showStatus() -> UIDevice.BatteryState{
+        return self.batteryState
+    }
     
     
     // MARK: Functions
     @objc func batteryLevelDidChange(_ notification: Notification) {
         print(batteryLevel)
+        self.delegate?.heyBatteryUpdate(value: self.batteryLevel, state: self.batteryState)
+        print("BatterLeve : \(self.batteryLevel) ")
     }
     
     @objc func batteryStateDidChange(_ notification: Notification){
         print(batteryState)
-        debugBattery(state: batteryState)
+        self.delegate?.heyBatteryUpdate(value: self.batteryLevel, state: self.batteryState)
+         debugBattery(state: self.batteryState)
     }
     
     private func debugBattery(state: UIDevice.BatteryState){
