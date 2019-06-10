@@ -14,19 +14,16 @@ class BatteryIndicatorVC: UIViewController, heyBatteryDelegate {
     let batteryFrame = CGRect(x:0, y:0, width:24, height: 14)
     let indicatorMaxWidth : CGFloat = 14
     let indicatorHeight : CGFloat = 8
-    
     var imageWrapper : UIImageView?
     var batteryImage = UIImage(named: "battery")
     var batteryChargingImage = UIImage(named: "battery-charging")
-    
     var indicator = UIView(frame: CGRect(x: 3, y: 3, width: 0, height: 8))
-    
     let myBattery = heyBattery()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.frame.size = batteryFrame.size
-        
+        myBattery.delegate = self
         // ImageView
         craeteImageWrapper()
     }
@@ -61,9 +58,6 @@ class BatteryIndicatorVC: UIViewController, heyBatteryDelegate {
         print("Battery update called in BatteryIndicatorVC")
         updateIndicator()
     }
-    
-    
-
 }
 
 

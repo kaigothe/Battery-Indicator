@@ -60,7 +60,7 @@ class heyBattery {
     @objc func batteryLevelDidChange(_ notification: Notification) {
         print(batteryLevel)
         self.delegate?.heyBatteryUpdate(value: self.batteryLevel, state: self.batteryState)
-        print("BatterLeve : \(self.batteryLevel) ")
+        print("BatteryLevel : \(self.batteryLevel) ")
     }
     
     @objc func batteryStateDidChange(_ notification: Notification){
@@ -75,10 +75,12 @@ class heyBattery {
             print("Lädt")
         case .full :
             print("Voll")
-        case .unknown:
-            print("unkown")
         case .unplugged:
             print("angeschlossen")
+        case .unknown:
+            print("unkown")
+        default:
+            print("default")
         }
     }
 }
