@@ -9,7 +9,7 @@
 import UIKit
 
 protocol heyBatteryDelegate {
-    func heyBatteryUpdate(value: Float, state: UIDevice.BatteryState)
+    func heyBatteryUpdate(value: Float, state: UIDevice.BatteryState, isLowPowerEnabled:Bool?)
 }
 
 
@@ -23,6 +23,10 @@ class heyBattery {
     
     private var batteryState: UIDevice.BatteryState {
         return UIDevice.current.batteryState
+    }
+    
+    private var isLowPowerModeEnabled : Bool{
+        return ProcessInfo.processInfo.isLowPowerModeEnabled
     }
     
     var delegate : heyBatteryDelegate?
@@ -41,12 +45,19 @@ class heyBattery {
             name: UIDevice.batteryStateDidChangeNotification,
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(lowPowerModeChanged(_:)),
+            name: NSNotification.Name.NSProcessInfoPowerStateDidChange,
+            object: nil
+        )
+        
         print(batteryLevel)
         debugBattery(state: batteryState)
     }
     
     
-    // MARK: Battery
+    // MARK: Battery functions
     public func showLevel() -> Float{
         return self.batteryLevel
     }
@@ -56,17 +67,21 @@ class heyBattery {
     }
     
     
-    // MARK: Functions
+    // MARK: Notifications Functions
     @objc func batteryLevelDidChange(_ notification: Notification) {
         print(batteryLevel)
-        self.delegate?.heyBatteryUpdate(value: self.batteryLevel, state: self.batteryState)
+        self.delegate?.heyBatteryUpdate(value: self.batteryLevel, state: self.batteryState, isLowPowerEnabled: isLowPowerModeEnabled)
         print("BatteryLevel : \(self.batteryLevel) ")
     }
     
     @objc func batteryStateDidChange(_ notification: Notification){
         print(batteryState)
-        self.delegate?.heyBatteryUpdate(value: self.batteryLevel, state: self.batteryState)
+        self.delegate?.heyBatteryUpdate(value: self.batteryLevel, state: self.batteryState, isLowPowerEnabled: isLowPowerModeEnabled)
          debugBattery(state: self.batteryState)
+    }
+    
+    @objc func lowPowerModeChanged(_ notifications: Notification){
+        self.delegate?.heyBatteryUpdate(value: self.batteryLevel, state: self.batteryState, isLowPowerEnabled: isLowPowerModeEnabled)
     }
     
     private func debugBattery(state: UIDevice.BatteryState){
